@@ -1,7 +1,8 @@
 import notifIcon from '../../public/notif_icon.svg'
 import searchIcon from '../../public/search_icon.svg'
 
-export default function(props) {
+// eslint-disable-next-line react/prop-types
+export default function TopBar({ name }) {
     return (
         <>
             <div className="flex flex-col w-full px-7 py-5">
@@ -16,7 +17,7 @@ export default function(props) {
                         </div>
                 </div>
                 <div className='flex justify-start my-5'>
-                    <h2 className='text-3xl font-bold'>Hey, {props.name}!</h2>
+                    <h2 className='text-3xl font-bold'>Hey, {name}!</h2>
                 </div>
             </div>
         </>

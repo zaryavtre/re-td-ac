@@ -2,14 +2,33 @@ import { useState } from 'react'
 import './App.css'
 import Card from './components/Card'
 import TopBar from './components/TopBar'
+import AddTodo from './components/AddTodo'
 import NewTodo from './components/NewTodo'
 
 function App() {
   const [message, setMessage] = useState('')
+  const [todo, setTodo] = useState([
+    {
+      id: 0,
+      title: '',
+      completed: false
+    }
+  ])
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    setTodo(prevTodo => {
+        const updatedTodo = {
+          ...prevTodo, 
+          title: handleMessage
+        }
+        prevTodo.push(updatedTodo)
+      }
+    )
+  }
 
   const handleMessage = (e) => {
     setMessage(e.target.value)
-    console.log('the message is',message)
   }
   
   return (
@@ -24,10 +43,12 @@ function App() {
           <div className='w-0.5 h-4 bg-white absolute'></div>
           <div className='w-4 h-0.5 bg-white absolute'></div>
       </div>
-      <NewTodo 
+      <AddTodo 
+        submitForm={submitForm}
         message={handleMessage}
         value={message}
       />
+      {setTodo ? <NewTodo /> : ''}
     </div>
   )
 }
