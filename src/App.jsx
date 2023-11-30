@@ -17,14 +17,6 @@ function App() {
 
   const submitForm = (e) => {
     e.preventDefault()
-    setTodo(prevTodo => {
-        const updatedTodo = {
-          ...prevTodo, 
-          title: handleMessage
-        }
-        prevTodo.push(updatedTodo)
-      }
-    )
   }
 
   const handleMessage = (e) => {
@@ -48,7 +40,7 @@ function App() {
         message={handleMessage}
         value={message}
       />
-      {setTodo ? <NewTodo /> : ''}
+      {setTodo ? <NewTodo todoTitle={handleMessage} /> : ''}
     </div>
   )
 }
