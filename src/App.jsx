@@ -6,17 +6,18 @@ import AddTodo from './components/AddTodo'
 import NewTodo from './components/NewTodo'
 
 function App() {
-  const [message, setMessage] = useState('')
-  const [todo, setTodo] = useState([
-    {
-      id: 0,
-      title: '',
-      completed: false
-    }
-  ])
+  const [message, setMessage] = useState([])
 
   const submitForm = (e) => {
     e.preventDefault()
+    setMessage((prevMessage) => [
+      ...prevMessage,
+      {
+        title: message,
+        id: prevMessage.length
+      }
+    ])
+    console.log('Updated State:', setMessage);
   }
 
   const handleMessage = (e) => {
@@ -40,7 +41,7 @@ function App() {
         message={handleMessage}
         value={message}
       />
-      {setTodo ? <NewTodo todoTitle={handleMessage} /> : ''}
+     <NewTodo todoTitle={submitForm} />
     </div>
   )
 }

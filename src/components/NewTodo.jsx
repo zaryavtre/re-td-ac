@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
-export default function NewTodo(props) {
-    console.log(props.todoTitle)
+/* eslint-disable react/prop-types */
+export default function NewTodo({todoTitle}) {
+    console.log(todoTitle)
     return (
-        <>
-            <div className="bg-white rounded-1">
-                <p>{props.todoTitle}</p>
-            </div>
-        </>
-    )
-}
+      <>
+        {todoTitle.map((todo, index) => 
+          <div className="bg-white rounded-1" key={index}>
+            <p>{todo.title}</p>
+          </div>
+        )}
+      </>
+    );
+  }
+  
