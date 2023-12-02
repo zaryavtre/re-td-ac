@@ -23,7 +23,6 @@ export default function AddTodo(props) {
                     </form>
                 </div>
             </div>
-            <h1>{props.value}</h1>
         </>
     )
 }

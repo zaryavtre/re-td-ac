@@ -6,18 +6,16 @@ import AddTodo from './components/AddTodo'
 import NewTodo from './components/NewTodo'
 
 function App() {
-  const [message, setMessage] = useState()
-  const [pushMessage, setPushMessage] = useState({
-    title: '',
-    id: 0,
-  })
+  const [message, setMessage] = useState('')
+  const [pushMessage, setPushMessage] = useState([])
 
   const submitForm = (e) => {
     e.preventDefault()
     setPushMessage(prevPushMessage => {
-      const pushTodo = {...prevPushMessage, title: message}
+      const pushTodo = [...prevPushMessage, {title: message, id: prevPushMessage.length}]
       return pushTodo
     })
+    
   }
 
   const handleMessage = (e) => {
