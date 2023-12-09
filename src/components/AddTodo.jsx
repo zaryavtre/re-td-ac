@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 export default function AddTodo(props) {
-    console.log(props)
     const display = {
         display: props.visibility ? 'block' : 'none'
     }

@@ -10,13 +10,19 @@ function App() {
   const [pushMessage, setPushMessage] = useState([])
   const [visible, setVisible] = useState(true)
 
+  
   const submitForm = (e) => {
     e.preventDefault()
+    if(!message == ''){
     setPushMessage(prevPushMessage => {
       const pushTodo = [...prevPushMessage, {title: message, id: prevPushMessage.length}]
       return pushTodo
-    })
-    setVisible(false)
+    })}
+    if(message.length > 0) {
+      setVisible(false)
+      setMessage('')
+    }
+    console.log(pushMessage)
   }
 
   const hideForm = (e) => {
