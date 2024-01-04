@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import Card from './components/Card'
 import TopBar from './components/TopBar'
 import AddTodo from './components/AddTodo'
 import NewTodo from './components/NewTodo'
@@ -15,7 +14,7 @@ function App() {
     e.preventDefault()
     if(!message == ''){
     setPushMessage(prevPushMessage => {
-      const pushTodo = [...prevPushMessage, {title: message, id: prevPushMessage.length}]
+      const pushTodo = [...prevPushMessage, {title: message, id: prevPushMessage.length, completed: false}]
       return pushTodo
     })}
     if(message.length > 0) {
@@ -25,11 +24,11 @@ function App() {
     console.log(pushMessage)
   }
 
-  const hideForm = (e) => {
+  const hideForm = () => {
     setVisible(false)
   }
 
-  const revealForm = (e) => {
+  const revealForm = () => {
     setVisible(true)
   }
 
