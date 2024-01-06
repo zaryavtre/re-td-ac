@@ -8,6 +8,7 @@ function App() {
   const [message, setMessage] = useState('')
   const [pushMessage, setPushMessage] = useState([])
   const [visible, setVisible] = useState(true)
+  //const [isCompleted, setCompleted] = useState()
 
   
   const submitForm = (e) => {
@@ -22,6 +23,14 @@ function App() {
       setMessage('')
     }
     console.log(pushMessage)
+  }
+
+  const handleChange = (e) => {
+    if(e.target.checked) {
+      console.log(pushMessage)
+    } else {
+      console.log('we are unchecked')
+    }
   }
 
   const hideForm = () => {
@@ -43,7 +52,10 @@ function App() {
           name="Von Zaryavtre"
         />
         <div className='px-4'>
-          <NewTodo todoTitle={pushMessage}/>
+          <NewTodo
+            todoTitle={pushMessage}
+            completed={handleChange}
+          />
         </div>
       </div>
       <div onClick={revealForm} className='absolute rounded-full bg-blue-950 w-11 h-11 bottom-6 right-6 cursor-pointer flex justify-center items-center'>
