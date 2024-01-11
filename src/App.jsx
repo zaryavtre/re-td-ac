@@ -22,7 +22,6 @@ function App() {
       setVisible(false)
       setMessage('')
     }
-    console.log(pushMessage)
   }
 
   const handleChange = (e) => {
