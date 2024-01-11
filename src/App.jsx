@@ -24,12 +24,12 @@ function App() {
     }
   }
 
-  const handleChange = (e) => {
-    if(e.target.checked) {
-      console.log(pushMessage)
-    } else {
-      console.log('we are unchecked')
-    }
+  const handleChange = (id) => {
+    setPushMessage(prevMessage => {
+      return prevMessage.map((card) => {
+        return card.id == id ? {...card, completed: !card.completed} : card
+      })
+    })
   }
 
   const hideForm = () => {
