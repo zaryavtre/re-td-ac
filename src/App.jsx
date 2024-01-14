@@ -8,7 +8,6 @@ function App() {
   const [message, setMessage] = useState('')
   const [pushMessage, setPushMessage] = useState([])
   const [visible, setVisible] = useState(true)
-  //const [isCompleted, setCompleted] = useState()
 
   
   const submitForm = (e) => {
@@ -30,6 +29,10 @@ function App() {
         return card.id == id ? {...card, completed: !card.completed} : card
       })
     })
+  }
+
+  const handleRemove = (id) => {
+    setPushMessage((prevMessage) => prevMessage.filter((todo) => todo.id !== id))
   }
 
   const hideForm = () => {
@@ -54,6 +57,7 @@ function App() {
           <NewTodo
             todoTitle={pushMessage}
             completed={handleChange}
+            removeTodo={handleRemove}
           />
         </div>
       </div>
